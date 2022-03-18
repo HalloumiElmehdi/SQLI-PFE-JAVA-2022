@@ -54,7 +54,7 @@ public class AuthServiceImp implements AuthService {
         final User user = User.builder().build();
         mapToEntity(userRegisterFormDTO, user);
         user.setGroup(userGroup);
-        //userRepository.save(user);
+        userRepository.save(user);
 
         return mapToLoggedInDTO(user, new UserLoggedInDTO());
     }
