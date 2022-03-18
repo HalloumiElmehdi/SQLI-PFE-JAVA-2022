@@ -11,5 +11,4 @@ public class ErrorResponse {
     private Integer httpStatus;
     private String exception;
     private String error;
-    private List<FieldError> fieldErrors;
 }
