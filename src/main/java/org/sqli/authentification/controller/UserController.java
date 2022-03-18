@@ -24,13 +24,11 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserLoggedInDTO> register(@RequestBody @Valid final UserRegisterFormDTO userRegisterFormDTO) {
-        //return ResponseEntity.ok(authService.register(userRegisterFormDTO));
-        return null;
+        return ResponseEntity.ok(authService.register(userRegisterFormDTO));
     }
 
     @DeleteMapping("/{login}")
     public ResponseEntity<SuccessMessageResponse> deleteUser(@PathVariable final String login) {
-
         return ResponseEntity.ok(userService.deleteByLogin(login));
     }
 }
