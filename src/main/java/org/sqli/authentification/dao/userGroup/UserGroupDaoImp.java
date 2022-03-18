@@ -1,4 +1,4 @@
-package org.sqli.authentification.dao;
+package org.sqli.authentification.dao.userGroup;
 
 import org.springframework.stereotype.Repository;
 import org.sqli.authentification.entitie.UserGroup;

@@ -2,26 +2,33 @@ package org.sqli.authentification.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.sqli.authentification.dto.UserLoggedInDTO;
 import org.sqli.authentification.dto.UserRegisterFormDTO;
-import org.sqli.authentification.service.AuthService;
+import org.sqli.authentification.service.auth.AuthService;
+import org.sqli.authentification.service.user.SuccessMessageResponse;
+import org.sqli.authentification.service.user.UserService;
 
 @RestController
 @RequestMapping(value = "/api/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     private final AuthService authService;
+    private final UserService userService;
 
-    public UserController(AuthService authService) {
+    public UserController(AuthService authService, UserService userService) {
         this.authService = authService;
+        this.userService = userService;
     }
 
     @PostMapping
     public ResponseEntity<UserLoggedInDTO> register(@RequestBody final UserRegisterFormDTO userRegisterFormDTO) {
         return ResponseEntity.ok(authService.register(userRegisterFormDTO));
+    }
+
+    @DeleteMapping("/{login}")
+    public ResponseEntity<SuccessMessageResponse> deleteUser(@PathVariable final String login) {
+
+        return ResponseEntity.ok(userService.deleteByLogin(login));
     }
 }
