@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class UserFormDto implements Serializable {
+public class UserFormDTO implements Serializable {
     private String login;
     private String password;
 }

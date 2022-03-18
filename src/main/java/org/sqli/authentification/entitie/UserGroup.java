@@ -13,9 +13,7 @@ import javax.persistence.*;
 @Builder
 @Table(name = "userGroup")
 public class UserGroup {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 

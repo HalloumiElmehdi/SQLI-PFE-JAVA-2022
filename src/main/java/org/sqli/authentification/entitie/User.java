@@ -15,10 +15,19 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(nullable = false, updatable = false)
+    @SequenceGenerator(
+            name = "PRIMARY_SEQUENCE_GEN",
+            sequenceName = "PRIMARY_SEQUENCE",
+            allocationSize = 1
 
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "PRIMARY_SEQUENCE"
+
+    )
+    private Long id;
 
     private String login;
 

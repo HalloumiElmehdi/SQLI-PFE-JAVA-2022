@@ -18,4 +18,12 @@ public class RestExceptionHandler {
         errorResponse.setError(exception.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(final NotFoundException exception) {
+        log.error(exception.getMessage());
+        final ErrorResponse errorResponse = new ErrorResponse();;
+        errorResponse.setError(exception.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
 }
