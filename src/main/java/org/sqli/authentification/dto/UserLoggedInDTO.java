@@ -12,4 +12,5 @@ public class UserLoggedInDTO implements Serializable {
     private String login;
     private String groupName;
     private boolean enabled;
+    private int loginattempts;
 }
