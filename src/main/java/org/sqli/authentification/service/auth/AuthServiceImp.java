@@ -28,7 +28,7 @@ public class AuthServiceImp implements AuthService {
     }
 
     @Override
-    public UserLoggedInDTO login(UserFormDTO userFormDto) {
+    public UserLoggedInDTO login(final UserFormDTO userFormDto) {
         log.info("login attempt with data {}", userFormDto);
         UserLoggedInDTO userLoggedIn = userDao
                 .findByLoginAndPassword(userFormDto.getLogin(), userFormDto.getPassword())
@@ -46,7 +46,7 @@ public class AuthServiceImp implements AuthService {
     }
 
     @Override
-    public UserLoggedInDTO register(UserRegisterFormDTO userRegisterFormDTO) {
+    public UserLoggedInDTO register(final UserRegisterFormDTO userRegisterFormDTO) {
         log.info("registering new user with data {}", userRegisterFormDTO);
         final UserGroup userGroup = userGroupRepository
                         .findByName(userRegisterFormDTO.getGroup())
@@ -54,7 +54,7 @@ public class AuthServiceImp implements AuthService {
         final User user = User.builder().build();
         mapToEntity(userRegisterFormDTO, user);
         user.setGroup(userGroup);
-        userRepository.save(user);
+        //userRepository.save(user);
 
         return mapToLoggedInDTO(user, new UserLoggedInDTO());
     }

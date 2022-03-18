@@ -8,6 +8,7 @@ import org.sqli.authentification.dto.UserRegisterFormDTO;
 import org.sqli.authentification.service.auth.AuthService;
 import org.sqli.authentification.service.user.SuccessMessageResponse;
 import org.sqli.authentification.service.user.UserService;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/user", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -22,8 +23,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserLoggedInDTO> register(@RequestBody final UserRegisterFormDTO userRegisterFormDTO) {
-        return ResponseEntity.ok(authService.register(userRegisterFormDTO));
+    public ResponseEntity<UserLoggedInDTO> register(@RequestBody @Valid final UserRegisterFormDTO userRegisterFormDTO) {
+        //return ResponseEntity.ok(authService.register(userRegisterFormDTO));
+        return null;
     }
 
     @DeleteMapping("/{login}")
