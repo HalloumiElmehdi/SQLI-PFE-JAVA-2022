@@ -1,11 +1,12 @@
 package org.sqli.authentification.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.sqli.authentification.dao.UserDao;
 import org.sqli.authentification.dto.UserFormDto;
 import org.sqli.authentification.dto.UserLoggedInDTO;
 import org.sqli.authentification.entitie.User;
-import org.sqli.authentification.exception.AuthFailedException;
+import org.sqli.authentification.exception.AuthException;
 import org.sqli.authentification.repository.UserRepository;
 
 @Service
@@ -23,9 +24,13 @@ public class AuthServiceImp implements AuthService {
     @Override
     public UserLoggedInDTO login(UserFormDto userFormDto) {
         log.info("login attempt with data {}", userFormDto);
-        return userDao
-                    .findByLoginAndPassword(userFormDto.getLogin(), userFormDto.getPassword())
-                                            .map(user -> mapToLoggedInDTO(user, new UserLoggedInDTO()))
+        UserLoggedInDTO userLoggedIn = userDao
+                .findByLoginAndPassword(userFormDto.getLogin(), userFormDto.getPassword())
+                .map(user -> mapToLoggedInDTO(user, new UserLoggedInDTO()))
+                .orElseThrow(() -> new AuthException("Authentication error"));
+        if(!userLoggedIn.isEnabled()) throw new AuthException("User disabled");
+        return userLoggedIn;
+
     }
 
 
@@ -38,6 +43,7 @@ public class AuthServiceImp implements AuthService {
         userLoggedInDTO.setId(user.getId());
         userLoggedInDTO.setLogin(user.getLogin());
         userLoggedInDTO.setGroupName(user.getGroup().getName());
+        userLoggedInDTO.setEnabled(user.isEnabled());
         return userLoggedInDTO;
     }
 
