@@ -1,4 +1,4 @@
-package org.sqli.authentification.service;
+package org.sqli.authentification.service.auth;
 
 import org.sqli.authentification.dto.UserFormDTO;
 import org.sqli.authentification.dto.UserLoggedInDTO;

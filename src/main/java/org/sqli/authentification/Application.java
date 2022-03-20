@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.sqli.authentification.entitie.User;
 import org.sqli.authentification.repository.UserRepository;
 
+import javax.transaction.Transactional;
+import java.util.Optional;
+
 @SpringBootApplication
 public class Application {
 

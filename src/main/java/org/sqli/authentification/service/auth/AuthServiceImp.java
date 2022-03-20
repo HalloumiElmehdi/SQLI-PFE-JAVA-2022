@@ -1,8 +1,8 @@
-package org.sqli.authentification.service;
+package org.sqli.authentification.service.auth;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.sqli.authentification.dao.UserDao;
+import org.sqli.authentification.dao.user.UserDao;
 import org.sqli.authentification.dto.UserFormDTO;
 import org.sqli.authentification.dto.UserLoggedInDTO;
 import org.sqli.authentification.dto.UserRegisterFormDTO;

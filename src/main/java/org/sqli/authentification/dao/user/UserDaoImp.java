@@ -1,4 +1,4 @@
-package org.sqli.authentification.dao;
+package org.sqli.authentification.dao.user;
 
 import org.springframework.stereotype.Repository;
 import org.sqli.authentification.entitie.User;
@@ -19,4 +19,11 @@ public class UserDaoImp implements UserDao {
     public Optional<User> findByLoginAndPassword(String login, String password) {
         return userRepository.findByLoginAndPassword(login, password);
     }
+
+    @Override
+    public Long deleteByLogin(String login) {
+        return userRepository.deleteByLogin(login);
+    }
+
+
 }
