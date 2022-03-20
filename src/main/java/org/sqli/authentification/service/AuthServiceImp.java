@@ -1,9 +1,6 @@
 package org.sqli.authentification.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import org.sqli.authentification.dao.UserDao;
 import org.sqli.authentification.dto.UserFormDto;
 import org.sqli.authentification.dto.UserLoggedInDTO;
@@ -29,7 +26,6 @@ public class AuthServiceImp implements AuthService {
         return userDao
                     .findByLoginAndPassword(userFormDto.getLogin(), userFormDto.getPassword())
                                             .map(user -> mapToLoggedInDTO(user, new UserLoggedInDTO()))
-                                                     .orElseThrow(() -> new AuthFailedException("Authentication error"));
     }
 
 
