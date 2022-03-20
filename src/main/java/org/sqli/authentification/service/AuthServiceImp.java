@@ -30,6 +30,7 @@ public class AuthServiceImp implements AuthService {
                 .orElseThrow(() -> new AuthException("Authentication error"));
         if(!userLoggedIn.isEnabled()) throw new AuthException("User disabled");
         return userLoggedIn;
+
     }
 
 
