@@ -22,7 +22,7 @@ public class AuthController {
     }
 
     @PostMapping
-    public ResponseEntity<UserLoggedInDTO> createProduct(@RequestBody  final UserFormDTO userFormDto) {
+    public ResponseEntity<UserLoggedInDTO> login(@RequestBody  final UserFormDTO userFormDto) {
         return ResponseEntity.ok(authService.login(userFormDto));
     }
 

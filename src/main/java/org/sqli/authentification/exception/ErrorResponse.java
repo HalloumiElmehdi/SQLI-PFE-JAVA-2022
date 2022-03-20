@@ -3,9 +3,12 @@ package org.sqli.authentification.exception;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class ErrorResponse {
-    // object to return in case of exception
+    private Integer httpStatus;
+    private String exception;
     private String error;
 }
