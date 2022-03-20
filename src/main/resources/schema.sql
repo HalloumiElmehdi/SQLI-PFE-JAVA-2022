@@ -1,5 +1,5 @@
 CREATE TABLE user (
-  id                INTEGER PRIMARY KEY AUTO_INCREMENT,
+  id                INTEGER PRIMARY KEY,
   login             VARCHAR(64) NOT NULL,
   password          VARCHAR(64) NOT NULL,
   enabled           INTEGER DEFAULT 1 NOT NULL,

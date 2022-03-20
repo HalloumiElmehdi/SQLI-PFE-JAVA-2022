@@ -3,6 +3,7 @@ package org.sqli.authentification.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.sqli.authentification.entitie.User;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {

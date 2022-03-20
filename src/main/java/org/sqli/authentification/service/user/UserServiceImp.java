@@ -19,7 +19,7 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public SuccessMessageResponse deleteByLogin(final String login) {
+    public SuccessMessageResponse deleteByLogin(String login) {
         Long deleted = userDao.deleteByLogin(login);
         log.info("deleted   {}", deleted);
         if(deleted > 0)

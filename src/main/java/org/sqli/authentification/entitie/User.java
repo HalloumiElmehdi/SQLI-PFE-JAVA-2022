@@ -14,10 +14,19 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
-    @Setter(AccessLevel.NONE)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false, updatable = false)
+    @SequenceGenerator(
+            name = "PRIMARY_SEQUENCE_GEN",
+            sequenceName = "PRIMARY_SEQUENCE",
+            allocationSize = 1
+
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "PRIMARY_SEQUENCE"
+
+    )
     private Long id;
 
     private String login;
