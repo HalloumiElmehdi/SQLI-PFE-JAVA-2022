@@ -1,11 +1,11 @@
 package org.sqli.authentification.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 import org.sqli.authentification.dao.UserDao;
 import org.sqli.authentification.dto.UserFormDto;
 import org.sqli.authentification.dto.UserLoggedInDTO;
 import org.sqli.authentification.entitie.User;
+import org.sqli.authentification.exception.AuthFailedException;
 import org.sqli.authentification.repository.UserRepository;
 
 @Service
@@ -26,7 +26,6 @@ public class AuthServiceImp implements AuthService {
         return userDao
                     .findByLoginAndPassword(userFormDto.getLogin(), userFormDto.getPassword())
                                             .map(user -> mapToLoggedInDTO(user, new UserLoggedInDTO()))
-                                                     .get();
     }
 
 
